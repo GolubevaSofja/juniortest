@@ -1,0 +1,15 @@
+RewriteEngine on
+# Set root to /public
+RewriteCond %{HTTP_HOST} ^juniortest-sofja-g.free.nf$ [NC,OR]
+RewriteCond %{HTTP_HOST} ^www.juniortest-sofja-g.free.nf$
+RewriteCond %{REQUEST_URI} !public/
+RewriteRule (.*) /public/$1 [L]
+# Remove .php at the end
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^([^\.]+)$ $1.php [NC,L]
+
+
+php_value display_errors On
+php_value mbstring.http_input auto
+php_value date.timezone Europe/Riga
